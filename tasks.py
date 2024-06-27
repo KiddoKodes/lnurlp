@@ -28,6 +28,8 @@ async def wait_for_paid_invoices():
 
 
 async def on_invoice_paid(payment: Payment):
+    print('Paylink1',payment)
+
     if payment.extra.get("tag") != "lnurlp":
         return
 
@@ -55,6 +57,7 @@ async def on_invoice_paid(payment: Payment):
 
 
 async def send_webhook(payment: Payment, pay_link: PayLink):
+    print('Paylink',pay_link)
     if not pay_link.webhook_url:
         return
 
