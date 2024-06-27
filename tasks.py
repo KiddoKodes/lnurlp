@@ -20,10 +20,13 @@ from .nostr.event import Event
 
 async def wait_for_paid_invoices():
     invoice_queue = asyncio.Queue()
+    print('Inititating LNURLP QUeue')
     register_invoice_listener(invoice_queue, get_current_extension_name())
 
     while True:
         payment = await invoice_queue.get()
+        print('Inititating LNURLP QUeue',payment)
+
         await on_invoice_paid(payment)
 
 
